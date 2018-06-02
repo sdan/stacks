@@ -13,6 +13,8 @@ read name
 
 mkdir -p /var/www/"$name"."$base".com/html
 
+chown -R $USER:$USER /var/www/"$name"."$base".com/html
+
 chmod -R 755 /var/www
 
 echo "Created directory: /var/www/$name.$base.com/html"
@@ -21,4 +23,19 @@ echo "Add index.html to that directory if intended."
 echo "Enter sites-AVAILABLE directory"
 read directory
 
-cp /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base".com
+echo "Reverse Proxy... (true or false)"
+read rp
+
+echo "Port Number"
+read num
+
+javac ServerConfig.java
+java ServerConfig /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base".com "$name" "$base".com rp num
+
+ln -s /etc/nginx/sites-available/"$name"."$base".com /etc/nginx/sites-enabled/
+
+nginx -t
+
+echo "Restarting server..."
+
+systemctl restart nginx
