@@ -29,7 +29,7 @@ echo "Port Number like 8080"
 read portNUMBER
 
 javac ServerConfig.java
-java ServerConfig /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base" "$name" "$base" rp portNUMBER
+java ServerConfig /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base" "$name" "$base" "$rp" "$portNUMBER"
 
 ln -s /etc/nginx/sites-available/"$name"."$base" /etc/nginx/sites-enabled/
 
