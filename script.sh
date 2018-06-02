@@ -26,10 +26,10 @@ echo "Reverse Proxy... (true or false)"
 read rp
 
 echo "Port Number like 8080"
-read num
+read portNUMBER
 
 javac ServerConfig.java
-java ServerConfig /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base" "$name" "$base" rp num
+java ServerConfig /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base" "$name" "$base" rp portNUMBER
 
 ln -s /etc/nginx/sites-available/"$name"."$base" /etc/nginx/sites-enabled/
 

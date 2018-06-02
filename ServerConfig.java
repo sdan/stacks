@@ -93,8 +93,8 @@
              outfile.println(temp);
          }
 
-         System.out.println("JAVA PORT NUMBER "+num);
          int num = Integer.parseInt(portNumber);
+         System.out.println("PORT NUMBER: "+num);
 
          outfile.println(" location / {");
          outfile.println("proxy_pass http://localhost:"+num);
