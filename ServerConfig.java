@@ -51,6 +51,7 @@
 
     public void proxy()
     {
+        System.out.println("JAVA PROXY");
         Scanner fromfile = openToRead(defaultServerConfigDirectory);
         PrintWriter outfile = openToWrite(newServerConfigDirectory);
 
@@ -72,6 +73,7 @@
 
      public void reverseProxy()
      {
+         System.out.println("JAVA REVERSE PROXY");
          Scanner fromfile = openToRead(defaultServerConfigDirectory);
          PrintWriter outfile = openToWrite(newServerConfigDirectory);
 
@@ -97,12 +99,12 @@
          System.out.println("PORT NUMBER: "+num);
 
          outfile.println(" location / {");
-         outfile.println("proxy_pass http://localhost:"+num);
-         outfile.println("proxy_http_version 1.1");
-         outfile.println("proxy_set_header Upgrade $http_upgrade");
-         outfile.println("proxy_set_header Connection 'upgrade'");
-         outfile.println("proxy_set_header Host $host");
-         outfile.println("proxy_cache_bypass $http_upgrade");
+         outfile.println("proxy_pass http://localhost:"+num+";");
+         outfile.println("proxy_http_version 1.1;");
+         outfile.println("proxy_set_header Upgrade $http_upgrade;");
+         outfile.println("proxy_set_header Connection 'upgrade';");
+         outfile.println("proxy_set_header Host $host;");
+         outfile.println("proxy_cache_bypass $http_upgrade;");
          outfile.println("}");
          outfile.println("}");
 
