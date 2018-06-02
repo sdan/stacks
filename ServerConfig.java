@@ -93,6 +93,7 @@
              outfile.println(temp);
          }
 
+         System.out.println("JAVA PORT NUMBER "+num);
          int num = Integer.parseInt(portNumber);
 
          outfile.println(" location / {");

@@ -11,9 +11,9 @@ read base
 echo "Enter the name of your server block. ex. data, for data.suryad.com"
 read name
 
-mkdir -p /var/www/"$name"."$base".com/html
+mkdir -p /var/www/"$name"."$base"/html
 
-chown -R $USER:$USER /var/www/"$name"."$base".com/html
+chown -R $USER:$USER /var/www/"$name"."$base"/html
 
 
 echo "Created directory: /var/www/$name.$base.com/html"
@@ -29,12 +29,14 @@ echo "Port Number like 8080"
 read num
 
 javac ServerConfig.java
-java ServerConfig /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base".com "$name" "$base".com rp num
+java ServerConfig /etc/nginx/sites-available/"$directory" /etc/nginx/sites-available/"$name"."$base" "$name" "$base" rp num
 
-ln -s /etc/nginx/sites-available/"$name"."$base".com /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/"$name"."$base" /etc/nginx/sites-enabled/
 
 nginx -t
 
 echo "Restarting server..."
 
 systemctl restart nginx
+
+echo "Done."
