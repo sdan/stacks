@@ -15,18 +15,17 @@ mkdir -p /var/www/"$name"."$base".com/html
 
 chown -R $USER:$USER /var/www/"$name"."$base".com/html
 
-chmod -R 755 /var/www
 
 echo "Created directory: /var/www/$name.$base.com/html"
 echo "Add index.html to that directory if intended."
 
-echo "Enter sites-AVAILABLE directory"
+echo "Enter main sites-AVAILABLE directory ex. suryad.com for /etc/nginx/sites-available/suryad.com"
 read directory
 
 echo "Reverse Proxy... (true or false)"
 read rp
 
-echo "Port Number"
+echo "Port Number like 8080"
 read num
 
 javac ServerConfig.java
